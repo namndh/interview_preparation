@@ -19,4 +19,7 @@
               - definition
         - Design tables in google sheets for other non code-based teams con contribute
         - Centralized schemas in Hive, I also do contribute in this project. Centralized schema in Hive helps schema in Presto and Data Warehouse are synchonized.
-- Load:  
+  - Load: The final step of ETL process. This step is to load the newly transformed data into new destination. We have been using S3-like-object-storage systems such as Minio, Ceph to store fact, dim, cube tables. We store data in both mode full loading for some type 1 dim tables, and incremental for fact, cube and dim tables.
+- Appendix:
+  - What is dim, fact, cube tables in our systems?
+    - Dim: Dimension table 

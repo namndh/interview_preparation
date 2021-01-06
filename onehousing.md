@@ -13,13 +13,20 @@
         - Modeling data base Ralph Kimball's theory
           - Dimensions table:
             - Type 1: 
-              - definition
+              - This method overwrited old data with new data, therefore dim type 1 does not track historical data. Our method is to to conduct dim type 1 but still make them available when want to check historical data is using current/snapshot method
               - I developed a scd Type 1 processor to add auto increment id (new id for new record, maintain id for record which have the same pk but the other information/columns is updated)
             - Type 2:
-              - definition
+              - This method track historical by creating multiple records for a given natural key with seperate surrogate keys and different version numbers
+              - there are three methods to versioning data:
+                - version
+                - available date time
+                - flag
         - Design tables in google sheets for other non code-based teams con contribute
         - Centralized schemas in Hive, I also do contribute in this project. Centralized schema in Hive helps schema in Presto and Data Warehouse are synchonized.
-  - Load: The final step of ETL process. This step is to load the newly transformed data into new destination. We have been using S3-like-object-storage systems such as Minio, Ceph to store fact, dim, cube tables. We store data in both mode full loading for some type 1 dim tables, and incremental for fact, cube and dim tables.
+  - Load: The final step of ETL process. This step is to load the newly transformed data into new destination. We have been using S3-like-object-storage systems such as Minio, Ceph to store fact, dim, cube tables. We store data in both mode full loading for some type 1 dim tables, and incremental for fact, cube and dim tables. To build a data pipelines for ETL process, we have been using Airflow to schedule and CICD.
 - Appendix:
   - What is dim, fact, cube tables in our systems?
-    - Dim: Dimension table 
+    - Dim: Dimension table contains dimensions of a fact, acording to Kimball, Dim table is denormalized but in our datawarehouse, where the design is snowflake, the dim table is normalized to remove redundant records.
+    - Fact: Fact table contains the numeric measures produced by an opeational measurement event in the real world. Fact table in our data warehouse mainly stored data from transactions of different systems.
+- 
+  

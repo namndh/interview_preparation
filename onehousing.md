@@ -28,5 +28,64 @@
   - What is dim, fact, cube tables in our systems?
     - Dim: Dimension table contains dimensions of a fact, acording to Kimball, Dim table is denormalized but in our datawarehouse, where the design is snowflake, the dim table is normalized to remove redundant records.
     - Fact: Fact table contains the numeric measures produced by an opeational measurement event in the real world. Fact table in our data warehouse mainly stored data from transactions of different systems.
-- 
+
+### Aimesoft and MoneyLover: 
+  - After more than a year not working with computer vision problems I almost forgot about YOLOv3 and other models in machine learning and deep learning. In this two company, I have leant about machine learning engineering. such as data cleaner, data labeling, data augumentation, traing model, optimize model.
   
+## Computer Science:
+### OS:
+  - Thread vs Process:
+    - Process means a program in execution, whereas thread means a segment of a process
+    - A process is mostly isolated - not sharing memory space, while threads share memory space in a process
+  - Parallelism vs Concurency:
+    - Concurency: how many process can start at a time
+    - Parallelism: how many process can start and run together at a time
+### Backend design:
+  - What is APIs?
+    - An API (Application Programming Interface) is a very generic term - it can be used in all sorts of programming contexts: web app, mobile apps. It's a specification for how a piece of software can be used by other block of codes
+  - What programing language do you use? Why? which you prefer?
+    - I am recently using Python which has a general purpose that gained extensive popularity. Closely to human read. Interpreter language/ Script language that can run without compiler.
+    - why I am using Python?
+      - Script language: I can run a block of code fast without compiling. It helps me to explore the data step by step and consumes less time.
+      - Closely to human read: Easy to read code and understand the code
+### SE questions:
+  - Review code: code review is funcdamental to the software development process, even when there's only engineer in a team or doing a project. with review code, you'll can get ideas of the reviewers's knowledge and problem-solving skills, coding conventions. In our case, we dicussed and propose a coding convention checklist that can use to do the code review
+  - TDD (test driven development), in our case, we do unit test. we help to get rids of logic erros and coding flaws. In some case, unit tests help us to estimate performance of the code.
+  - Agile software development process: this approach based on iterations. It means requirements and solutions are generated throught the collaboration of team's member, other teams and end-users. 
+  - OOP: is a type of programming that is based on objects rather than just functions and procedures. Individual object is grouped into classes.
+    - Main features of OOP:
+      - Inheritance: allows classes inherit common properties from other classes
+      - Polymorphsim: refers to the ability to exist in multiple forms. Multiple definitions can be given to a single interface.
+        - Example:
+          - Overloading: two or more method in one class have the same method name but different paramterss
+          ```
+          public class BasicCoffeeMachine {
+          // ...
+            public Coffee brewCoffee(CoffeeSelection selection) throws CoffeeException {
+                switch (selection) {
+                case FILTER_COFFEE:
+                    return brewFilterCoffee();
+                default:
+                    throw new CoffeeException(
+                        "CoffeeSelection ["+selection+"] not supported!");
+                }   
+            }
+          
+            public List brewCoffee(CoffeeSelection selection, int number) throws CoffeeException {
+                List coffees = new ArrayList(number);
+                for (int i=0; i<number; i++) {
+                    coffees.add(brewCoffee(selection));
+                }
+                return coffees;
+            }
+          // ...
+          }
+          ``` 
+        - Overriding: there are tow methods which have the same method signature (method names, parameters). One in the child class and another in the parent class
+      - Encapsulation: refers to hiding data as the data specified in one class is hidden from other classes. Encapsulation helps in isolating implementation details from the behavior exposed to clients of a class.
+      - Abstraction: is a mechanism which providing a generalization
+      - Encapsulation vs Abstraction: Encapsulation term we use in implementation, implement encapsulation method using access modifiers (protected, public, private)
+  - S.O.L.I.D:
+    - (here)[https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design]
+  - Design Patterns:
+    - 

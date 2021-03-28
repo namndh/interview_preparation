@@ -119,6 +119,70 @@
     - Dirty Read occurs when a transaction is allowed to read data from a row that has been modified by another running transaction or not commited yet.
     - To prevent race condition in database when concurrent transactions occurs, we should lock the database when a transaction occurs ultil succeed or fail completely then we unlock it for other transactoin
 
+### OS
+
+1. What is process/thread? What are different between them?
+    - Process means a program in execution, whereas thread means a segment of a process. Threads can execute diffenrent parts of the program at the same time or they can execute same parts at the same time but with different execution state:
+      - They have independent instruction
+      - They are working with different data
+    - A process is mostly isolated - not sharing memory space with other process, while threads share memory space in a process
+    - A process is defined as an entity which represents the basis unit of work to be implemented in the system
+    - A thread shares with its peer threads few information like code segment, data segment and open files. Each thread belongs to exactly one process and no thread can exist outside a process.
+
+    1.1 What data process, thread need to live? Why they said that Thread is a lightweight process?
+    - The components/resources of a process:
+      - Stack: contains temporary data such as method/function parameters, return address and local variables
+      - Heap: this is dynamically allocated memory to a process during its run time
+      - Text: this includes the current activity represented by value of Program counter and the contents of the processor's registers
+      - Data: This section contains the global and static variables
+      - The stack and the heap start at opposite ends of the process's free space and grow towards each together. If they should ever meet, then either a stack overflow error will occurs or a call to new or malloc will fail due to insufficient memory available.
+    - Thread consists:  
+      - A program counter: that keeps track of which instruction to execute next
+      - A system registers which hold its current working variables  
+      - A stack which contains the execution history
+    - In a process that consists multiple threads, threads sharing common code, data and certain structures such as open files
+    - Thread is a lightweight process because they have their own stack but can access shared data.
+
+    1.2 How CPU context swith between:
+        - Process: process switching where we switch one process with another process. It envolves switching of all the process resources with those needed by a new process or switching the memory address space which includes memory addresses, page tables and kernel resources, caches in the processor.
+        - Thread: thread switching is type of context switching from one thread to another thread in the same process. Thread switching is very efficient and much cheaper because it involves switching out only indentities and resources such as program counter, register and stack pointers. The cost of thread switching is same as the cost of entering and exiting the kernel.
+
+    1.3 What is multi-process/multi-thread?
+        - Multi-process: multi-processor is a computer system having two or more processing units each sharing main memory and perrpherals in order to simultaneously process programs.
+        - Multi-thread: multi-threading is the ability of central processing unit to provide multiple threads of execution concurrently
+
+    1.4 Multiprocess in Python:
+    - In multiprocess, the original process if forked process into multiple child processces bypassing the GIL. Each child process will have a copy of the entire program's memory
+    - The main python script has a different process ID and multiprocessing module spawn new processes with different process IDs.
+    - Each process runs independently and has its own memory space
+    - As soon as execution of target function is finished, the processes get terminated
+    - Data sharing when execute program on multiprocessing model. Multiprocessing module provides Array and Value objects to share data between processes
+    - Server process: A server process can hold Python objects and allows other processes to manipulate them using proxies. multiprocess module provides a Manager class which controls a server process. Hence, managers provide a way to create data which can be shared between different process. 
+      - Server process is more flexible than using shared memory becasue they can be made to support arbitray object types like list, dict, queue. etc. but slower than using shared memory.
+    - Pipe/Queue: Data in pipe may become corrupted if two processes try to read from or write to the same end of the pipe at the same time. Of course there is no risk of corruption from processes using different ends of the pipe at the same time. Queue do proper synchroniration between processes, at the expense of more complexity. Hence, queues are said to be thread and process safe.
+
+    1.5 Multithreading in Python:
+     - Threading in Python, concurrency is achieved using multiple threads, but due to GIL only on thread can be running at a time.
+     - Because of GIL. multithreading in Python is suitable for I/O bound task rather than CPU bound tasks.
+
+2. Concurrency and Parallel:
+   - Concurrency: When an application is capable of executing two tasks run looks like simultaneously, they can take advantage of CPU time-slicing feature of operating system where each task run part of its task then go to waiting state. When task is in waiting state, CPU is assigned other task to complete it's part of task.
+   - Parallelism: It literally physically run parts of tasks or run multiple tasks, at the same time using multi-core infrastructure of CPU, by assigning one core to each task or sub-task.
+   - Concurrency is the composition of independently executing processes, while parallism is the simultaneous execution of computations.
+   - Concurrency is about dealing with lots of things at once. Parallelism is about doing lots of things at once.
+
+   2.1 Critical section is the a protected section of the program where the shared resources is accessed.
+
+   2.3 Race condition occurs when two or more threads can access shared data and they try to change it at the same time. To prevent race condition occur, we would typically put a lock around the shared data to ensure only one thread can access the data at a time.
+
+   2.4 Look mechanism:
+    - A lock allows only one thread to enter the critical section
+    - A mutex is the same as a lock but it can be system wide
+    - A semaphore does the same as a mutex but allows n numbers of threads to enter
+    - A spinlock is a lock which uses busy waiting
+
+## Data Engineering
+
 ### Spark/Hadoop
 
 1. What is Hadoop/Spark?

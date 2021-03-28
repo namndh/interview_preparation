@@ -229,9 +229,11 @@
 
     2.3 Cost:
     - Both Hadoop and Spark are open source Apache products, so they are free. But they have hardware cost associated with them. According to data saving strategy, Spark requires more RAM which is more expensive in than disk required from Hadoop.
-2.4 Simplicity:
+    
+    2.4 Simplicity:
     - Both are easy to use
-2.5 Fault Tolerance:
+ 
+    2.5 Fault Tolerance:
     - In Hadoop, the data is divided into blocks which are stored in DataNodes. Those blocks have duplicate copied stored in other nodes in other nodes with the default replication factor. If a node go down, the data can be retrieved from other nodes.
 
 ### Datawarehouse

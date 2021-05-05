@@ -144,12 +144,12 @@
     - Thread is a lightweight process because they have their own stack but can access shared data.
 
     1.2 How CPU context swith between:
-        - Process: process switching where we switch one process with another process. It envolves switching of all the process resources with those needed by a new process or switching the memory address space which includes memory addresses, page tables and kernel resources, caches in the processor.
-        - Thread: thread switching is type of context switching from one thread to another thread in the same process. Thread switching is very efficient and much cheaper because it involves switching out only indentities and resources such as program counter, register and stack pointers. The cost of thread switching is same as the cost of entering and exiting the kernel.
+    - Process: process switching where we switch one process with another process. It envolves switching of all the process resources with those needed by a new process or switching the memory address space which includes memory addresses, page tables and kernel resources, caches in the processor.
+    - Thread: thread switching is type of context switching from one thread to another thread in the same process. Thread switching is very efficient and much cheaper because it involves switching out only indentities and resources such as program counter, register and stack pointers. The cost of thread switching is same as the cost of entering and exiting the kernel.
 
     1.3 What is multi-process/multi-thread?
-        - Multi-process: multi-processor is a computer system having two or more processing units each sharing main memory and perrpherals in order to simultaneously process programs.
-        - Multi-thread: multi-threading is the ability of central processing unit to provide multiple threads of execution concurrently
+    - Multi-process: multi-processor is a computer system having two or more processing units each sharing main memory and perrpherals in order to simultaneously process programs.
+    - Multi-thread: multi-threading is the ability of central processing unit to provide multiple threads of execution concurrently
 
     1.4 Multiprocess in Python:
     - In multiprocess, the original process if forked process into multiple child processces bypassing the GIL. Each child process will have a copy of the entire program's memory
